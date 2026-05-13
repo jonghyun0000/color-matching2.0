@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply font-sans text-gray-900 bg-gray-50;
+  }
+  button {
+    @apply outline-none;
+  }
+  /* iOS 입력 줌 방지 */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .device-frame {
+    @apply max-w-md mx-auto bg-white min-h-screen relative;
+  }
+}
