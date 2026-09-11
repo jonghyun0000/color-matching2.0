@@ -1,0 +1,915 @@
+{
+  "baseCommit": "f12035b62d3e9e825ff40baedd2658bd8f261803",
+  "source": "https://huggingface.co/datasets/ashraq/fashion-product-images-small",
+  "selection": "First 3 Topwear/Bottomwear Apparel rows per label, ascending train row, search limit 2000.",
+  "browser": "Chrome/152.0.0.0 (Codex in-app browser, macOS)",
+  "summary": {
+    "total": 30,
+    "top1": 12,
+    "top3": 19
+  },
+  "byLabel": [
+    {
+      "label": "Black",
+      "total": 3,
+      "top1": 0,
+      "top3": 0
+    },
+    {
+      "label": "White",
+      "total": 3,
+      "top1": 1,
+      "top3": 2
+    },
+    {
+      "label": "Blue",
+      "total": 3,
+      "top1": 2,
+      "top3": 3
+    },
+    {
+      "label": "Navy Blue",
+      "total": 3,
+      "top1": 1,
+      "top3": 1
+    },
+    {
+      "label": "Grey",
+      "total": 3,
+      "top1": 1,
+      "top3": 3
+    },
+    {
+      "label": "Red",
+      "total": 3,
+      "top1": 1,
+      "top3": 1
+    },
+    {
+      "label": "Green",
+      "total": 3,
+      "top1": 2,
+      "top3": 2
+    },
+    {
+      "label": "Pink",
+      "total": 3,
+      "top1": 1,
+      "top3": 2
+    },
+    {
+      "label": "Yellow",
+      "total": 3,
+      "top1": 3,
+      "top3": 3
+    },
+    {
+      "label": "Beige",
+      "total": 3,
+      "top1": 0,
+      "top3": 2
+    }
+  ],
+  "records": [
+    {
+      "id": 15970,
+      "row": 0,
+      "label": "Navy Blue",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "bb359560e6c0cc1fcd3c2a4b4ea50b37bca18a3ba0d5b0d4dad9e50a8918e40e",
+      "output": [
+        {
+          "hex": "#7E7C88",
+          "name": "미디엄 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#A3A1AD",
+          "name": "라벤더",
+          "family": "purple"
+        },
+        {
+          "hex": "#FAF9F8",
+          "name": "오프 화이트",
+          "family": "white"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 39386,
+      "row": 1,
+      "label": "Blue",
+      "category": "Bottomwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "dcb9488337513cbbee815446a3b00a8b9646cd65a3d5afe14b9ac607063d6cc4",
+      "output": [
+        {
+          "hex": "#475E6A",
+          "name": "데님 블루",
+          "family": "blue"
+        },
+        {
+          "hex": "#2A3A45",
+          "name": "다크 데님",
+          "family": "blue"
+        },
+        {
+          "hex": "#FCFCFC",
+          "name": "퓨어 화이트",
+          "family": "white"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 21379,
+      "row": 3,
+      "label": "Black",
+      "category": "Bottomwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "e07735060d0ea9af05f4d67dc1c6f1a4a4c7d527e7fcc85af702c779a4db15fe",
+      "output": [
+        {
+          "hex": "#FDFCFC",
+          "name": "퓨어 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#333132",
+          "name": "다크 차콜",
+          "family": "gray"
+        },
+        {
+          "hex": "#D1C1B7",
+          "name": "더스티 핑크",
+          "family": "pink"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 53759,
+      "row": 4,
+      "label": "Grey",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "5450936ac1fb096ed6c254eaa110337d6295cdb108ff89a8c4f7637e7f43af25",
+      "output": [
+        {
+          "hex": "#A7ADAE",
+          "name": "미디엄 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#8B8B8B",
+          "name": "연 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#666B6D",
+          "name": "미디엄 그레이",
+          "family": "gray"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 1855,
+      "row": 5,
+      "label": "Grey",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "33eead97a82e74c78503813c37bb8605f63f028badebeccef6ddf60b6f786a32",
+      "output": [
+        {
+          "hex": "#CCC6D3",
+          "name": "라벤더",
+          "family": "purple"
+        },
+        {
+          "hex": "#B0A1A6",
+          "name": "연 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#FCF9FA",
+          "name": "블러쉬 핑크",
+          "family": "pink"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    },
+    {
+      "id": 30805,
+      "row": 6,
+      "label": "Green",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "3ed8423a52459b0c6f583858ebd21bb2d2adde1c8cdda5644b820b3c6bc7876b",
+      "output": [
+        {
+          "hex": "#6D7A63",
+          "name": "세이지 그린",
+          "family": "green"
+        },
+        {
+          "hex": "#7E8970",
+          "name": "세이지 그린",
+          "family": "green"
+        },
+        {
+          "hex": "#F8FAF7",
+          "name": "오프 화이트",
+          "family": "white"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 42419,
+      "row": 17,
+      "label": "White",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "f257e41c8c58d0925a9aa1d76ef4eb37afb9d1ad14ae63f85762cbdab73eed5d",
+      "output": [
+        {
+          "hex": "#DBE2DF",
+          "name": "페이디드 데님",
+          "family": "blue"
+        },
+        {
+          "hex": "#FBFDFD",
+          "name": "페이디드 데님",
+          "family": "blue"
+        },
+        {
+          "hex": "#A6C2B9",
+          "name": "페이디드 데님",
+          "family": "blue"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 13089,
+      "row": 23,
+      "label": "Grey",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "da4136a82f1f2866be0032d1ec99b7630ff1e46b495770aa0dec2ee13793fb90",
+      "output": [
+        {
+          "hex": "#DCDDDA",
+          "name": "세이지 그린",
+          "family": "green"
+        },
+        {
+          "hex": "#CFC9C2",
+          "name": "연 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#FCFBFB",
+          "name": "퓨어 화이트",
+          "family": "white"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    },
+    {
+      "id": 7990,
+      "row": 27,
+      "label": "Navy Blue",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "e4b8dae0df76a5704e918ed50b31089e680cb74715f40c2997a262961852531c",
+      "output": [
+        {
+          "hex": "#3E3D45",
+          "name": "다크 퍼플",
+          "family": "purple"
+        },
+        {
+          "hex": "#2F2C31",
+          "name": "다크 퍼플",
+          "family": "purple"
+        },
+        {
+          "hex": "#D6BC9E",
+          "name": "베이지",
+          "family": "beige"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 37812,
+      "row": 30,
+      "label": "Navy Blue",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "d8682ae3a439997df4917441e6747dfcddef796e8d33d27d32aeb66bf8c03cd4",
+      "output": [
+        {
+          "hex": "#35384A",
+          "name": "다크 데님",
+          "family": "blue"
+        },
+        {
+          "hex": "#1B1B27",
+          "name": "다크 퍼플",
+          "family": "purple"
+        },
+        {
+          "hex": "#FAF9FB",
+          "name": "라벤더",
+          "family": "purple"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 4729,
+      "row": 31,
+      "label": "Green",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "9b2d083cce436d045cc6ba044426f45b3e839edb03eee26219c09178110a22d2",
+      "output": [
+        {
+          "hex": "#09C87E",
+          "name": "딥 틸",
+          "family": "green"
+        },
+        {
+          "hex": "#F6FDFB",
+          "name": "페이디드 데님",
+          "family": "blue"
+        },
+        {
+          "hex": "#3CC890",
+          "name": "딥 틸",
+          "family": "green"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 20099,
+      "row": 35,
+      "label": "Green",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "622330dc56c3e2b057d6434f99d3b97175ad2e59611eaa4c16074a83893c50b1",
+      "output": [
+        {
+          "hex": "#D1D16D",
+          "name": "샌드 베이지",
+          "family": "beige"
+        },
+        {
+          "hex": "#FEFDF9",
+          "name": "페일 버터",
+          "family": "yellow"
+        },
+        {
+          "hex": "#EFD4A9",
+          "name": "페일 버터",
+          "family": "yellow"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 3954,
+      "row": 39,
+      "label": "Pink",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "824a472d73ab089ef00a96e7a18a419a096c98dec1081e292e8eb025058ea1a2",
+      "output": [
+        {
+          "hex": "#DD648D",
+          "name": "코랄",
+          "family": "pink"
+        },
+        {
+          "hex": "#F1B6A6",
+          "name": "코랄",
+          "family": "pink"
+        },
+        {
+          "hex": "#FCF3F2",
+          "name": "블러쉬 핑크",
+          "family": "pink"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 28690,
+      "row": 43,
+      "label": "Beige",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "bc0901b44b925c301d4391123a7b3f9b01f564272bf38f49e96f3bbdc10eb30e",
+      "output": [
+        {
+          "hex": "#E9CEBF",
+          "name": "블러쉬 핑크",
+          "family": "pink"
+        },
+        {
+          "hex": "#FDFCFA",
+          "name": "오프 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#D2B5A7",
+          "name": "더스티 핑크",
+          "family": "pink"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 18005,
+      "row": 46,
+      "label": "Black",
+      "category": "Bottomwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "a47ae0ab8eafb8c8a43a56dc15dcdcd2f41d7305fc544f7d4d1a091b4afe9c13",
+      "output": [
+        {
+          "hex": "#FCFBF9",
+          "name": "오프 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#222B26",
+          "name": "포레스트 그린",
+          "family": "green"
+        },
+        {
+          "hex": "#CCB1A1",
+          "name": "더스티 핑크",
+          "family": "pink"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 9452,
+      "row": 48,
+      "label": "Red",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "e794a5881b78e7a1678518dd3f8499ac9f082b4da7f73772437a951b8b586b55",
+      "output": [
+        {
+          "hex": "#D4BDC0",
+          "name": "더스티 핑크",
+          "family": "pink"
+        },
+        {
+          "hex": "#B79E9C",
+          "name": "연 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#FBF5F6",
+          "name": "블러쉬 핑크",
+          "family": "pink"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 5891,
+      "row": 55,
+      "label": "Black",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "92845e5b3e7f1c20d3c932401ac86a6250a02c3bc5b3db173a7e28e58fac6c88",
+      "output": [
+        {
+          "hex": "#CEC7C2",
+          "name": "연 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#F8F5F2",
+          "name": "오프 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#E9B788",
+          "name": "코랄",
+          "family": "pink"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 4943,
+      "row": 57,
+      "label": "White",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "cd1f7d9dd725616ffe95c1d6f9d947c28067243b9cbce06f58f81357f57a5943",
+      "output": [
+        {
+          "hex": "#D0CFD3",
+          "name": "라벤더",
+          "family": "purple"
+        },
+        {
+          "hex": "#FDFDFD",
+          "name": "퓨어 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#B2B0B3",
+          "name": "라벤더",
+          "family": "purple"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    },
+    {
+      "id": 10866,
+      "row": 59,
+      "label": "Red",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "6b8313231cd7470cc8d2bee3a56045eb14b214ee91a67ae5c29e7273209d0e1f",
+      "output": [
+        {
+          "hex": "#B92728",
+          "name": "와인",
+          "family": "red"
+        },
+        {
+          "hex": "#761F1D",
+          "name": "와인",
+          "family": "red"
+        },
+        {
+          "hex": "#DB8C63",
+          "name": "코랄",
+          "family": "pink"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 54924,
+      "row": 68,
+      "label": "Blue",
+      "category": "Bottomwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "e5c0586b19031c61cb71a341b8e7a0fd8d03ff55775079004edb09d93b3b8773",
+      "output": [
+        {
+          "hex": "#E3BC9F",
+          "name": "라이트 베이지",
+          "family": "beige"
+        },
+        {
+          "hex": "#9BAEB9",
+          "name": "페이디드 데님",
+          "family": "blue"
+        },
+        {
+          "hex": "#707F87",
+          "name": "미디엄 그레이",
+          "family": "gray"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    },
+    {
+      "id": 9660,
+      "row": 72,
+      "label": "Pink",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "cd952dd89ec8c9cdc08ac4a0a96b01427fc701ac1a10aaae905ba644582076f1",
+      "output": [
+        {
+          "hex": "#3F3231",
+          "name": "다크 차콜",
+          "family": "gray"
+        },
+        {
+          "hex": "#594C49",
+          "name": "차콜 그레이",
+          "family": "gray"
+        },
+        {
+          "hex": "#D3B595",
+          "name": "베이지",
+          "family": "beige"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 23876,
+      "row": 74,
+      "label": "Blue",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "52fae6e8f73eb6c9ec65791d89d2b37a5da8570d22a698a5c41d175c06041494",
+      "output": [
+        {
+          "hex": "#9EDAF3",
+          "name": "코발트 블루",
+          "family": "blue"
+        },
+        {
+          "hex": "#6DB5DC",
+          "name": "코발트 블루",
+          "family": "blue"
+        },
+        {
+          "hex": "#EEFAFA",
+          "name": "페이디드 데님",
+          "family": "blue"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 18237,
+      "row": 75,
+      "label": "Red",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "0b6251ddb0c57a4b789bb9b59b7e49cd75d5fa58292b814e994ba507bd036b60",
+      "output": [
+        {
+          "hex": "#F95F66",
+          "name": "비비드 오렌지",
+          "family": "yellow"
+        },
+        {
+          "hex": "#F7D4BC",
+          "name": "페일 버터",
+          "family": "yellow"
+        },
+        {
+          "hex": "#FDFAF4",
+          "name": "페일 버터",
+          "family": "yellow"
+        }
+      ],
+      "match1": false,
+      "match3": false
+    },
+    {
+      "id": 13419,
+      "row": 82,
+      "label": "Pink",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "1ae2e42c47fbcfb43cb72c88002d68c30d92503c1962b70eff9ac368ce6a31be",
+      "output": [
+        {
+          "hex": "#F97F85",
+          "name": "비비드 오렌지",
+          "family": "yellow"
+        },
+        {
+          "hex": "#F6BAB0",
+          "name": "코랄",
+          "family": "pink"
+        },
+        {
+          "hex": "#FDF5F2",
+          "name": "페일 버터",
+          "family": "yellow"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    },
+    {
+      "id": 9694,
+      "row": 105,
+      "label": "White",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "bcb14ef4271eb50f856c52f10e46b52a890f79276afd9207b91637d19c177123",
+      "output": [
+        {
+          "hex": "#F7F5F2",
+          "name": "오프 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#E7DAC7",
+          "name": "라이트 베이지",
+          "family": "beige"
+        },
+        {
+          "hex": "#B99179",
+          "name": "탠",
+          "family": "beige"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 15984,
+      "row": 108,
+      "label": "Yellow",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "c8e6277a3865de0bc13251a56d966af2c5d3b3392ecafa4953fa9df9dcfc099e",
+      "output": [
+        {
+          "hex": "#F6E9B6",
+          "name": "페일 버터",
+          "family": "yellow"
+        },
+        {
+          "hex": "#E9DBA5",
+          "name": "버터 옐로우",
+          "family": "yellow"
+        },
+        {
+          "hex": "#FEFCF6",
+          "name": "페일 버터",
+          "family": "yellow"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 10065,
+      "row": 152,
+      "label": "Yellow",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "efb785347067497b585131bc441decc7337710ac89470aaa19f10488b1cd5da5",
+      "output": [
+        {
+          "hex": "#FBDF4A",
+          "name": "비비드 오렌지",
+          "family": "yellow"
+        },
+        {
+          "hex": "#FEFBF1",
+          "name": "페일 버터",
+          "family": "yellow"
+        },
+        {
+          "hex": "#F8E699",
+          "name": "페일 버터",
+          "family": "yellow"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 21174,
+      "row": 191,
+      "label": "Beige",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "09bf7441d5d6136ee449520dd4b4f40b6d8b65eb4165222c89c96f5a20506945",
+      "output": [
+        {
+          "hex": "#F2E0D7",
+          "name": "블러쉬 핑크",
+          "family": "pink"
+        },
+        {
+          "hex": "#FCF5F1",
+          "name": "아이보리",
+          "family": "white"
+        },
+        {
+          "hex": "#D9BCA6",
+          "name": "베이지",
+          "family": "beige"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    },
+    {
+      "id": 6287,
+      "row": 262,
+      "label": "Yellow",
+      "category": "Topwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "8315ffa14785b019602b243cce8e9fdd2bb362d5bac254daa2a238259d9efbad",
+      "output": [
+        {
+          "hex": "#F0C53E",
+          "name": "비비드 오렌지",
+          "family": "yellow"
+        },
+        {
+          "hex": "#E9B673",
+          "name": "버터 옐로우",
+          "family": "yellow"
+        },
+        {
+          "hex": "#FDFAEF",
+          "name": "페일 버터",
+          "family": "yellow"
+        }
+      ],
+      "match1": true,
+      "match3": true
+    },
+    {
+      "id": 56822,
+      "row": 452,
+      "label": "Beige",
+      "category": "Bottomwear",
+      "width": 60,
+      "height": 80,
+      "sha256": "29125d2052af722dc89e33acfaa0587dee1cec8caf1789a04d45abed3b96b9c1",
+      "output": [
+        {
+          "hex": "#FDFCFB",
+          "name": "오프 화이트",
+          "family": "white"
+        },
+        {
+          "hex": "#D2C3BB",
+          "name": "더스티 핑크",
+          "family": "pink"
+        },
+        {
+          "hex": "#9A7865",
+          "name": "카멜",
+          "family": "beige"
+        }
+      ],
+      "match1": false,
+      "match3": true
+    }
+  ]
+}

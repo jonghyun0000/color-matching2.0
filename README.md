@@ -4,7 +4,7 @@
 
 옷 사진에서 대표 색을 추출하고 어울리는 상하의 색 조합을 추천하는 웹앱. 첫 바이브코딩 프로젝트에서 시작해 색 추출 안정성과 사용 경험을 개선하고 있습니다.
 
-[직접 체험하기](https://color-matching2-0.vercel.app) · [개선 기록과 검증](docs/UPGRADE.md)
+[직접 체험하기](https://color-matching2-0.vercel.app) · [개선 기록과 검증](docs/UPGRADE.md) · [의류 사진 30장 검증](docs/PHOTO-VALIDATION.md)
 
 ## 빠른 시작
 
@@ -107,7 +107,7 @@ src/
 | 프레임워크 | React 18 + Vite |
 | 언어 | TypeScript |
 | 스타일 | Tailwind CSS |
-| 라우팅 | React Router v6 |
+| 라우팅 | React Router v7 |
 | 아이콘 | lucide-react (이모지 사용 안 함) |
 | 폰트 | Pretendard Variable (CDN) |
 | 캡처 | html2canvas |
