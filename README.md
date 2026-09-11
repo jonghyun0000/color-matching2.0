@@ -146,4 +146,6 @@ PWA → Bubblewrap으로 TWA(Trusted Web Activity) 생성 → Play Store 등록.
 
 ## 라이선스
 
-Private. © 2026 Jonghyun.
+© 2026 Jonghyun. All rights reserved.
+
+소스 코드는 공개되어 있으나 별도의 오픈소스 라이선스는 부여하지 않았습니다.
