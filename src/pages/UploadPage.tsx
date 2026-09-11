@@ -81,7 +81,7 @@ export default function UploadPage() {
           <OptionCard
             icon={<ImageIcon className="w-6 h-6" />}
             title="갤러리에서 선택"
-            subtitle="저장된 사진에서 가져오기"
+            subtitle="사진을 가져온 뒤 옷 영역 선택"
             onClick={() => fileRef.current?.click()}
           />
           <OptionCard

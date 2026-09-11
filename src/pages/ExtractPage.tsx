@@ -4,19 +4,24 @@ import { RotateCcw, Palette, Loader2 } from 'lucide-react'
 import PageHeader from '@/components/ui/PageHeader'
 import { extractColors } from '@/lib/color/extract'
 import type { ColorInfo, ItemType } from '@/types/color'
+import GarmentRegionPicker from '@/components/GarmentRegionPicker'
+import type { ImageRegion } from '@/lib/color/region'
 
 export default function ExtractPage() {
   const navigate = useNavigate()
   const [params] = useSearchParams()
-  const itemType = (params.get('type') ?? 'top') as ItemType
+  const itemType: ItemType = params.get('type') === 'bottom' ? 'bottom' : 'top'
 
   const [imageUrl, setImageUrl] = useState<string | null>(null)
   const [colors, setColors] = useState<ColorInfo[]>([])
   const [selectedIdx, setSelectedIdx] = useState(0)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [editing, setEditing] = useState(true)
+  const [ready, setReady] = useState(false)
+  const [region, setRegion] = useState<ImageRegion>({x:.15,y:.15,width:.7,height:.7})
+  const [confirmedRegion, setConfirmedRegion] = useState<ImageRegion | null>(null)
 
   useEffect(() => {
-    let active = true
     let dataUrl: string | null = null
     try { dataUrl = sessionStorage.getItem('@dduckddak/temp-image') } catch { /* unavailable storage */ }
     if (!dataUrl) {
@@ -24,8 +29,15 @@ export default function ExtractPage() {
       return
     }
     setImageUrl(dataUrl)
+  }, [navigate])
 
-    extractColors(dataUrl, 5)
+  useEffect(() => {
+    if (!imageUrl || !confirmedRegion || editing) return
+    let active = true
+    setLoading(true)
+    setColors([])
+    setSelectedIdx(0)
+    extractColors(imageUrl, 5, confirmedRegion)
       .then((result) => {
         if (active) {
           setColors(result.slice(0, 3))
@@ -34,7 +46,7 @@ export default function ExtractPage() {
       })
       .catch(() => { if (active) setLoading(false) })
     return () => { active = false }
-  }, [navigate])
+  }, [imageUrl, confirmedRegion, editing])
 
   const handleConfirm = () => {
     const sel = colors[selectedIdx]
@@ -44,12 +56,15 @@ export default function ExtractPage() {
 
   return (
     <div className="device-frame pb-24">
-      <PageHeader title="색상 분석" />
+      <PageHeader title={editing ? '옷 영역 선택' : '색상 분석'} />
 
       <main className="px-5 py-6">
-        <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-6">
-          {imageUrl && <img src={imageUrl} alt="선택한 옷 사진" className="w-full h-full object-cover" />}
+        {editing ? imageUrl && <GarmentRegionPicker src={imageUrl} region={region} onChange={setRegion} onReady={setReady} /> : <>
+        <div className="relative rounded-2xl overflow-hidden bg-gray-100 mb-3">
+          {imageUrl && <img src={imageUrl} alt="분석한 옷 사진과 선택 영역" className="w-full h-auto" />}
+          <div className="absolute border-2 border-white" style={{left:`${region.x*100}%`,top:`${region.y*100}%`,width:`${region.width*100}%`,height:`${region.height*100}%`,boxShadow:'0 0 0 9999px rgb(11 31 58 / 55%)'}} />
         </div>
+        <button onClick={()=>setEditing(true)} className="mb-6 text-sm font-semibold text-brand underline underline-offset-4">옷 영역 다시 선택</button>
 
         <p className="text-xs font-medium text-gray-500 mb-3">
           {itemType === 'top' ? '상의' : '하의'}에서 추출한 대표 색상
@@ -88,7 +103,8 @@ export default function ExtractPage() {
           </div>
         )}
 
-        <div className="flex gap-2 mb-4">
+        </>}
+        <div className="flex gap-2 mb-4 mt-6">
           <button
             onClick={() => navigate('/upload')}
             className="flex-1 h-11 rounded-xl border border-gray-200 text-sm font-semibold flex items-center justify-center gap-1.5"
@@ -109,11 +125,11 @@ export default function ExtractPage() {
       <footer className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-100">
         <div className="px-5 py-3">
           <button
-            onClick={handleConfirm}
-            disabled={loading || colors.length === 0}
+            onClick={editing ? ()=>{setConfirmedRegion({...region});setLoading(true);setEditing(false)} : handleConfirm}
+            disabled={editing ? !ready : loading || colors.length === 0}
             className="w-full h-12 rounded-xl bg-brand text-white font-semibold text-sm disabled:opacity-40"
           >
-            {loading ? '분석 중...' : '이 색으로 추천받기'}
+            {editing ? '선택한 영역에서 색 추출' : loading ? '분석 중...' : '이 색으로 추천받기'}
           </button>
         </div>
       </footer>

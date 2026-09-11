@@ -2,6 +2,7 @@ import { rgbToHex, rgbToHsl, hexToHsl } from './convert'
 import { findNearestColor } from './name'
 import type { ColorInfo } from '@/types/color'
 import { kmeans } from './kmeans'
+import { normalizeRegion, type ImageRegion } from './region'
 
 interface Pixel { r: number; g: number; b: number }
 
@@ -18,17 +19,19 @@ interface Pixel { r: number; g: number; b: number }
  */
 export async function extractColors(
   source: string | File | HTMLImageElement,
-  k: number = 5
+  k: number = 5,
+  region?: ImageRegion
 ): Promise<ColorInfo[]> {
   const img = await loadImage(source)
-  const pixels = samplePixelsFromCenter(img, 100)
+  const pixels = samplePixelsFromCenter(img, 100, region)
   if (pixels.length === 0) return []
 
   const clusters = kmeans(pixels, k, 10)
 
   // 배경 가능성 점수로 가중치 보정
   const weighted = clusters.map((c) => {
-    const bg = backgroundScore(c.center.r, c.center.g, c.center.b)
+    // A user-selected garment may itself be white or black. Rank its actual coverage.
+    const bg = region ? 0 : backgroundScore(c.center.r, c.center.g, c.center.b)
     return { ...c, weight: c.count * (1 - bg * 0.75) }
   })
   weighted.sort((a, b) => b.weight - a.weight)
@@ -58,14 +61,16 @@ async function loadImage(src: string | File | HTMLImageElement): Promise<HTMLIma
  * 이미지 중앙 70% 영역에서 픽셀 샘플링.
  * 옷 사진은 보통 옷이 중앙에 위치하므로 배경 픽셀을 줄임.
  */
-function samplePixelsFromCenter(img: HTMLImageElement, size: number): Pixel[] {
+function samplePixelsFromCenter(img: HTMLImageElement, size: number, region?: ImageRegion): Pixel[] {
   const c = document.createElement('canvas')
   c.width = size; c.height = size
   const ctx = c.getContext('2d')!
-  const srcSize = Math.min(img.width, img.height) * 0.7
-  const srcX = (img.width - srcSize) / 2
-  const srcY = (img.height - srcSize) / 2
-  ctx.drawImage(img, srcX, srcY, srcSize, srcSize, 0, 0, size, size)
+  const width = img.naturalWidth, height = img.naturalHeight
+  const srcSize = Math.min(width, height) * 0.7
+  const r = region ? normalizeRegion(region) : null
+  ctx.drawImage(img, r ? r.x * width : (width - srcSize) / 2,
+    r ? r.y * height : (height - srcSize) / 2,
+    r ? r.width * width : srcSize, r ? r.height * height : srcSize, 0, 0, size, size)
 
   const d = ctx.getImageData(0, 0, size, size).data
   const pixels: Pixel[] = []

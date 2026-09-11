@@ -141,7 +141,7 @@ PWA → Bubblewrap으로 TWA(Trusted Web Activity) 생성 → Play Store 등록.
 ## 다음 단계 (Phase 2)
 
 - [ ] PWA 매니페스트 + 서비스 워커
-- [ ] 영역 직접 선택 크롭 UI (정확도 추가 개선)
+- [x] 옷 영역 직접 선택 (드래그·슬라이더·미리보기·재선택)
 - [ ] Supabase 백엔드 (계정 + 클라우드 동기화)
 - [ ] 옷장 기능 (보유 옷 등록 + 매칭)
 - [ ] AI 코디 추천 (LLM 호출)
