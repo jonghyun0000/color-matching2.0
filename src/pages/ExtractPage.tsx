@@ -16,23 +16,24 @@ export default function ExtractPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const dataUrl = sessionStorage.getItem('@dduckddak/temp-image')
+    let active = true
+    let dataUrl: string | null = null
+    try { dataUrl = sessionStorage.getItem('@dduckddak/temp-image') } catch { /* unavailable storage */ }
     if (!dataUrl) {
       navigate('/upload', { replace: true })
       return
     }
     setImageUrl(dataUrl)
 
-    const start = Date.now()
     extractColors(dataUrl, 5)
       .then((result) => {
-        const remaining = Math.max(0, 700 - (Date.now() - start))
-        setTimeout(() => {
+        if (active) {
           setColors(result.slice(0, 3))
           setLoading(false)
-        }, remaining)
+        }
       })
-      .catch(() => setLoading(false))
+      .catch(() => { if (active) setLoading(false) })
+    return () => { active = false }
   }, [navigate])
 
   const handleConfirm = () => {
@@ -47,7 +48,7 @@ export default function ExtractPage() {
 
       <main className="px-5 py-6">
         <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-6">
-          {imageUrl && <img src={imageUrl} alt="" className="w-full h-full object-cover" />}
+          {imageUrl && <img src={imageUrl} alt="선택한 옷 사진" className="w-full h-full object-cover" />}
         </div>
 
         <p className="text-xs font-medium text-gray-500 mb-3">

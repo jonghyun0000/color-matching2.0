@@ -14,10 +14,18 @@
   button {
     @apply outline-none;
   }
+  :is(button, a, input, select):focus-visible {
+    outline: 3px solid #6085b5;
+    outline-offset: 4px;
+  }
   /* iOS 입력 줌 방지 */
   input, textarea, select {
     font-size: 16px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
 @layer components {

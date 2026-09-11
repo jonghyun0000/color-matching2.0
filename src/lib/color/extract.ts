@@ -1,6 +1,7 @@
 import { rgbToHex, rgbToHsl, hexToHsl } from './convert'
 import { findNearestColor } from './name'
 import type { ColorInfo } from '@/types/color'
+import { kmeans } from './kmeans'
 
 interface Pixel { r: number; g: number; b: number }
 
@@ -46,8 +47,9 @@ async function loadImage(src: string | File | HTMLImageElement): Promise<HTMLIma
   return new Promise((resolve, reject) => {
     const img = new Image()
     img.crossOrigin = 'anonymous'
-    img.onload = () => resolve(img)
-    img.onerror = reject
+    const cleanup = () => { if (src instanceof File) URL.revokeObjectURL(url) }
+    img.onload = () => { cleanup(); resolve(img) }
+    img.onerror = () => { cleanup(); reject(new Error('이미지를 읽을 수 없습니다. JPG 또는 PNG 사진으로 다시 시도해 주세요.')) }
     img.src = url
   })
 }
@@ -85,61 +87,4 @@ function backgroundScore(r: number, g: number, b: number): number {
   if (hsl.s <= 8) score += 0.3    // 거의 무채색
   if (hsl.l <= 10) score += 0.2   // 너무 어두움 (검 배경)
   return Math.min(1, score)
-}
-
-/** K-means++ 초기화 + 단순 반복 */
-function kmeans(pixels: Pixel[], k: number, iter: number) {
-  const centers: Pixel[] = [pixels[Math.floor(Math.random() * pixels.length)]]
-  while (centers.length < k) {
-    const dists = pixels.map((p) =>
-      Math.min(...centers.map((c) => dist(p, c)))
-    )
-    const total = dists.reduce((a, b) => a + b, 0)
-    if (total === 0) break
-    let r = Math.random() * total
-    for (let i = 0; i < pixels.length; i++) {
-      r -= dists[i]
-      if (r <= 0) { centers.push(pixels[i]); break }
-    }
-  }
-
-  for (let it = 0; it < iter; it++) {
-    const clusters: Pixel[][] = Array.from({ length: k }, () => [])
-    for (const p of pixels) {
-      let bi = 0, bd = Infinity
-      for (let i = 0; i < k; i++) {
-        const d = dist(p, centers[i])
-        if (d < bd) { bd = d; bi = i }
-      }
-      clusters[bi].push(p)
-    }
-    for (let i = 0; i < k; i++) {
-      if (clusters[i].length === 0) continue
-      const avg = clusters[i].reduce(
-        (a, p) => ({ r: a.r + p.r, g: a.g + p.g, b: a.b + p.b }),
-        { r: 0, g: 0, b: 0 }
-      )
-      const n = clusters[i].length
-      centers[i] = { r: avg.r / n, g: avg.g / n, b: avg.b / n }
-    }
-  }
-
-  const counts = new Array(k).fill(0)
-  for (const p of pixels) {
-    let bi = 0, bd = Infinity
-    for (let i = 0; i < k; i++) {
-      const d = dist(p, centers[i])
-      if (d < bd) { bd = d; bi = i }
-    }
-    counts[bi]++
-  }
-  return centers.map((c, i) => ({
-    center: { r: Math.round(c.r), g: Math.round(c.g), b: Math.round(c.b) },
-    count: counts[i],
-  }))
-}
-
-function dist(a: Pixel, b: Pixel): number {
-  const dr = a.r - b.r, dg = a.g - b.g, db = a.b - b.b
-  return dr * dr + dg * dg + db * db
 }

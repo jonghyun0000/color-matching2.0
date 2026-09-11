@@ -10,6 +10,8 @@ export default function UploadPage() {
   const [itemType, setItemType] = useState<ItemType>('top')
   const fileRef = useRef<HTMLInputElement>(null)
   const camRef = useRef<HTMLInputElement>(null)
+  const [error, setError] = useState('')
+  const [reading, setReading] = useState(false)
 
   // HomePage에서 'action=camera' 또는 'action=gallery'로 진입 시 자동 트리거
   useEffect(() => {
@@ -23,11 +25,27 @@ export default function UploadPage() {
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
+    e.target.value = ''
+    setError('')
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      setError('JPG, PNG 또는 WebP 사진을 선택해 주세요. HEIC 사진은 JPG로 변환해 주세요.')
+      return
+    }
+    if (file.size > 3 * 1024 * 1024) {
+      setError('사진은 3MB 이하로 선택해 주세요. 크기를 줄이거나 색 직접 고르기를 이용할 수 있어요.')
+      return
+    }
+    setReading(true)
     const reader = new FileReader()
     reader.onload = () => {
-      sessionStorage.setItem('@dduckddak/temp-image', reader.result as string)
-      navigate(`/extract?type=${itemType}`)
+      try {
+        sessionStorage.setItem('@dduckddak/temp-image', reader.result as string)
+        navigate(`/extract?type=${itemType}`)
+      } catch {
+        setError('사진을 임시 저장할 공간이 부족해요. 더 작은 사진이나 색 직접 고르기를 이용해 주세요.')
+      } finally { setReading(false) }
     }
+    reader.onerror = () => { setReading(false); setError('사진을 읽지 못했어요. 다른 사진으로 다시 시도해 주세요.') }
     reader.readAsDataURL(file)
   }
 
@@ -36,6 +54,8 @@ export default function UploadPage() {
       <PageHeader title="옷 사진 업로드" />
 
       <main className="px-5 py-6">
+        {error && <p role="alert" className="mb-5 rounded-xl bg-rose-50 p-4 text-sm text-rose-800">{error}</p>}
+        {reading && <p role="status" className="mb-4 text-sm text-brand">사진을 준비하고 있어요…</p>}
         <p className="text-xs font-medium text-gray-500 mb-3">분석할 옷 종류</p>
         <div className="flex gap-1 p-1 bg-gray-100 rounded-xl mb-8">
           {(['top', 'bottom'] as const).map((t) => (
@@ -85,8 +105,8 @@ export default function UploadPage() {
         </section>
       </main>
 
-      <input ref={camRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={handleFile} />
-      <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFile} />
+      <input ref={camRef} type="file" accept="image/jpeg,image/png,image/webp" capture="environment" className="hidden" disabled={reading} onChange={handleFile} />
+      <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" disabled={reading} onChange={handleFile} />
     </div>
   )
 }

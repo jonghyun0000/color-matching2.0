@@ -18,12 +18,33 @@ export default function HomePage() {
           <h1 className="text-2xl font-bold tracking-tight text-brand">뚝딱</h1>
           <p className="text-sm text-gray-500 mt-1">오늘 입을 옷, 색 조합까지 뚝딱</p>
         </div>
-        <Link to="/settings" className="p-2 -mr-2 text-gray-500">
+        <Link to="/settings" aria-label="설정" className="p-2 -mr-2 text-gray-500">
           <SettingsIcon className="w-5 h-5" />
         </Link>
       </header>
 
       <main className="px-5">
+        <section className="relative overflow-hidden rounded-3xl bg-brand p-6 text-white mb-6">
+          <p className="text-[10px] font-semibold tracking-[0.25em] text-blue-200">YOUR EVERYDAY PALETTE</p>
+          <h2 className="text-[30px] leading-tight font-bold tracking-tight mt-4">입기 전에,<br />색부터 맞춰봐요.</h2>
+          <p className="text-xs text-blue-100 mt-3 leading-relaxed">내 옷의 색 하나로 시작하는<br />오늘의 새로운 조합.</p>
+          <div className="flex h-24 overflow-hidden rounded-2xl mt-6 border border-white/20" aria-label="네이비와 크림 색 조합">
+            <div className="flex-1 bg-[#1B2A49] p-3 flex items-end"><span className="text-[10px] tracking-widest">NAVY</span></div>
+            <div className="flex-1 bg-[#F5F0E8] text-[#403D39] p-3 flex items-end"><span className="text-[10px] tracking-widest">CREAM</span></div>
+            <div className="w-14 bg-[#B3A28E]" />
+          </div>
+        </section>
+        <section className="mb-6">
+          <div className="flex items-center justify-between mb-3"><h2 className="text-sm font-semibold">사진 없이 먼저 경험하기</h2><span className="text-[10px] text-gray-500">색을 눌러보세요</span></div>
+          <div className="grid grid-cols-3 gap-3">
+            {[['네이비', '#1B2A49'], ['베이지', '#D4B896'], ['화이트', '#FFFFFF']].map(([name, hex]) => (
+              <button key={hex} onClick={() => navigate(`/result?hex=${encodeURIComponent(hex)}&type=top`)} className="rounded-xl border border-gray-200 p-2 text-left hover:border-brand transition">
+                <span className="block h-12 rounded-lg border border-black/5" style={{background:hex}} />
+                <span className="block text-xs font-medium mt-2">{name} 상의 <span aria-hidden="true">↗</span></span>
+              </button>
+            ))}
+          </div>
+        </section>
         {/* 메인 액션 */}
         <section className="grid grid-cols-2 gap-3 mb-3">
           <MainCard
@@ -42,7 +63,7 @@ export default function HomePage() {
 
         <button
           onClick={() => navigate('/manual-color')}
-          className="w-full p-4 bg-gray-50 hover:bg-gray-100 rounded-2xl flex items-center gap-3 mb-8 transition"
+            className="w-full p-4 bg-gray-50 hover:bg-gray-100 rounded-2xl flex items-center gap-3 mb-8 transition"
         >
           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-brand">
             <Palette className="w-5 h-5" />

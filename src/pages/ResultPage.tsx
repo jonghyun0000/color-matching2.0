@@ -18,7 +18,7 @@ export default function ResultPage() {
   const [params] = useSearchParams()
   const baseHex = params.get('hex') ?? '#1B2A49'
   const initialItemType = (params.get('type') ?? 'top') as ItemType
-  const initialMode = (params.get('mode') ?? 'daily') as Mode
+  const initialMode: Mode = MODES.find(m => m.id === params.get('mode'))?.id ?? 'daily'
 
   const [mode, setMode] = useState<Mode>(initialMode)
   const [itemType, setItemType] = useState<ItemType>(initialItemType)
@@ -157,6 +157,7 @@ export default function ResultPage() {
           </section>
 
           {/* 재질 칩 */}
+          <p className="text-[11px] text-gray-500 leading-relaxed mb-3">점수는 색 조합 규칙을 적용한 참고값이며, 정확도나 만족 확률을 뜻하지 않아요.</p>
           <div className="flex gap-1.5 mb-4 mt-3">
             <button
               onClick={() => setSheet('material')}

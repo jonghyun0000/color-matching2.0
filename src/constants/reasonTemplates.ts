@@ -29,7 +29,7 @@ export function buildReason(
   const psych = PSYCHOLOGY_TAG[mode]
   switch (reasonType) {
     case 'barusa_verified':
-      return `${baseName}와 ${targetName}는 색채 가이드에서 검증된 ${psych} 조합이에요. 실패 확률이 거의 없어요.`
+      return `${baseName}와 ${targetName}는 이 앱의 색 조합 사전에 등록된 ${psych} 조합이에요. 실제 옷의 재질과 조명도 함께 살펴보세요.`
     case 'safe_anchor':
       return `${targetName}는 어떤 색에도 잘 어울리는 패션 기본 색이에요. ${baseName}와 함께 입으면 단정하고 깔끔한 인상을 줘요.`
     case 'neutral_match':
